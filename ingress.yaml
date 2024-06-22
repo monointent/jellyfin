@@ -1,0 +1,26 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: Jellyfin
+  namespace: Jellyfin
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`watch.monocompute.com`) # change to your domain
+      kind: Rule
+      services:
+        - name: Jellyfin
+          port: 80
+    - match: Host(`watch.monocompute.com`) # change to your domain
+      kind: Rule
+      services:
+        - name: Jellyfin
+          port: 80
+      middlewares:
+        - name: default-headers
+  tls:
+    secretName: monocompute-tls # change to your cert name
