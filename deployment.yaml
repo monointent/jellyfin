@@ -29,7 +29,7 @@ spec:
           limits:
             gpu.intel.com/i915: "1" # requesting 1 GPU
         ports:
-        - containerPort: 8096
+        - containerPort: 80
           name: web
           protocol: TCP
         env:
@@ -57,12 +57,53 @@ metadata:
 spec:
   ports:
   - name: web-tcp
-    port: 8096
+    port: 80
     protocol: TCP
-    targetPort: 8096
+    targetPort: 80
   - name: web-udp
-    port: 8096
+    port: 80
     protocol: UDP
-    targetPort: 8096
+    targetPort: 80
   selector:
     app: jellyfin
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: default-headers
+  namespace: jellyfin
+spec:
+  headers:
+    browserXssFilter: true
+    contentTypeNosniff: true
+    forceSTSHeader: true
+    stsIncludeSubdomains: true
+    stsPreload: true
+    stsSeconds: 15552000
+    customFrameOptionsValue: SAMEORIGIN
+    customRequestHeaders:
+      X-Forwarded-Proto: https
+kind: IngressRoute
+metadata:
+  name: jellyfin
+  namespace: jellyfin
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`watch.monocompute.com`) # change to your domain
+      kind: Rule
+      services:
+        - name: jellyfin
+          port: 80
+    - match: Host(`watch.monocompute.com`) # change to your domain
+      kind: Rule
+      services:
+        - name: jellyfin
+          port: 80
+      middlewares:
+        - name: default-headers
+  tls:
+    secretName: monocompute-tls # change to your cert name
