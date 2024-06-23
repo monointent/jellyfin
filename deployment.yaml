@@ -29,7 +29,7 @@ spec:
           limits:
             gpu.intel.com/i915: "1" # requesting 1 GPU
         ports:
-        - containerPort: 80
+        - containerPort: 8096
           name: web
           protocol: TCP
         env:
@@ -57,13 +57,13 @@ metadata:
 spec:
   ports:
   - name: web-tcp
-    port: 80
+    port: 8096
     protocol: TCP
-    targetPort: 80
+    targetPort: 8096
   - name: web-udp
-    port: 80
+    port: 8098
     protocol: UDP
-    targetPort: 80
+    targetPort: 8096
   selector:
     app: jellyfin
 ---
@@ -97,12 +97,12 @@ spec:
       kind: Rule
       services:
         - name: jellyfin
-          port: 80
+          port: 8096
     - match: Host(`watch.monocompute.com`) # change to your domain
       kind: Rule
       services:
         - name: jellyfin
-          port: 80
+          port: 8096
       middlewares:
         - name: default-headers
   tls:
