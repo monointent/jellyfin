@@ -2,8 +2,8 @@
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: Jellyfin
-  namespace: Jellyfin
+  name: jellyfin
+  namespace: jellyfin
   annotations: 
     kubernetes.io/ingress.class: traefik-external
 spec:
@@ -13,12 +13,12 @@ spec:
     - match: Host(`watch.monocompute.com`) # change to your domain
       kind: Rule
       services:
-        - name: Jellyfin
+        - name: jellyfin
           port: 80
     - match: Host(`watch.monocompute.com`) # change to your domain
       kind: Rule
       services:
-        - name: Jellyfin
+        - name: jellyfin
           port: 80
       middlewares:
         - name: default-headers
