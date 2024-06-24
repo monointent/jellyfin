@@ -39,15 +39,15 @@ spec:
         - mountPath: "/movies"
           readOnly: false
           name: smb
-          subPath: Films
+          subPath: movies
         - mountPath: "/shows"
           readOnly: false
           name: smb
-          subPath: TVShows
+          subPath: shows
         - mountPath: "/music"
           readOnly: false
           name: smb
-          subPath: Music
+          subPath: music
         - mountPath: /config
           name: jellyfin
           subPath: config
