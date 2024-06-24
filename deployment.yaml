@@ -36,6 +36,18 @@ spec:
         - name: TZ
           value: america/chicago
         volumeMounts:
+        - mountPath: "/movies"
+          readOnly: false
+          name: smb
+          subPath: Films
+        - mountPath: "/shows"
+          readOnly: false
+          name: smb
+          subPath: TVShows
+        - mountPath: "/music"
+          readOnly: false
+          name: smb
+          subPath: Music
         - mountPath: /config
           name: jellyfin
           subPath: config
@@ -46,6 +58,9 @@ spec:
         - name: jellyfin
           persistentVolumeClaim:
             claimName: jellyfin
+        - name: smb
+          persistentVolumeClaim:
+            claimName: pvc-jellyfin-smb
 ---
 apiVersion: v1
 kind: Service
