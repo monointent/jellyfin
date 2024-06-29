@@ -6,7 +6,7 @@ metadata:
   name: pv-jellyfin-smb
 spec:
   capacity:
-    storage: 2000Gi
+    storage: 100Gi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
