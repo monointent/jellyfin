@@ -48,6 +48,10 @@ spec:
           readOnly: false
           name: smb
           subPath: music
+        - mountPath: "/anime"
+          readOnly: false
+          name: smb
+          subPath: anime
         - mountPath: /config
           name: jellyfin
           subPath: config
