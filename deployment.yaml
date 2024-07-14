@@ -49,8 +49,16 @@ spec:
           readOnly: false
           name: smb
           subPath: anime
-          
+        - mountPath: /config
+          name: jellyfin
+          subPath: config
+        - mountPath: /cache
+          name: jellyfin
+          subPath: cache
       volumes:
+        - name: jellyfin
+          persistentVolumeClaim:
+            claimName: jellyfin
         - name: smb
           persistentVolumeClaim:
             claimName: pvc-jellyfin-smb
