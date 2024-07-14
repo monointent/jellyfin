@@ -58,6 +58,9 @@ spec:
         - mountPath: /cache
           name: jellyfin
           subPath: cache
+        - mountPath: /transcode
+          name: jellyfin
+          subPath: transcode
       volumes:
         - name: jellyfin
           persistentVolumeClaim:
