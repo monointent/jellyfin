@@ -25,6 +25,9 @@ spec:
       - image: jellyfin/jellyfin
         imagePullPolicy: Always
         name: jellyfin
+        resources:
+          limits:
+            gpu.intel.com/i915: "1" # requesting 1 GPU
         ports:
         - containerPort: 8096
           name: web
@@ -40,15 +43,11 @@ spec:
         - mountPath: "/shows"
           readOnly: false
           name: smb
-          subPath: TVShows
+          subPath: shows
         - mountPath: "/music"
           readOnly: false
           name: smb
           subPath: music
-        - mountPath: "/anime"
-          readOnly: false
-          name: smb
-          subPath: anime
         - mountPath: /config
           name: jellyfin
           subPath: config
@@ -82,3 +81,4 @@ spec:
     targetPort: 8096
   selector:
     app: jellyfin
+  type: ClusterIP
