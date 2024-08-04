@@ -21,7 +21,7 @@ spec:
     # make sure this value is unique for every share in the cluster
     volumeHandle: jellyfin
     volumeAttributes:
-      source: "//10.1.20.11/media" # Change this to your SMB IP and share name
+      source: "//10.1.20.5/media" # Change this to your SMB IP and share name
     nodeStageSecretRef:
       name: smbcreds
       namespace: default
