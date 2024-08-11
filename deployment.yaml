@@ -52,10 +52,6 @@ spec:
           readOnly: false
           name: smb
           subPath: anime
-        - mountPath: "/new"
-          readOnly: false
-          name: smb
-          subPath: new
         - mountPath: /config
           name: jellyfin
           subPath: config
