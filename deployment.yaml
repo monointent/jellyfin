@@ -44,6 +44,10 @@ spec:
           readOnly: false
           name: smb
           subPath: shows
+        - mountPath: "/new"
+          readOnly: false
+          name: smb
+          subPath: new
         - mountPath: "/music"
           readOnly: false
           name: smb
