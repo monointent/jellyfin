@@ -60,11 +60,11 @@ spec:
           readOnly: false
           name: smb
           subPath: books
-        - mountPath: "\data\metadata"
+        - mountPath: "/data/metadata"
           readOnly: false
           name: smb
           subPath: metadata
-        - mountPath: "\data\transcode"
+        - mountPath: "/data/transcode"
           readOnly: false
           name: smb
           subPath: transcode
