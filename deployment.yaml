@@ -56,6 +56,18 @@ spec:
           readOnly: false
           name: smb
           subPath: anime
+        - mountPath: "/books"
+          readOnly: false
+          name: smb
+          subPath: books
+        - mountPath: "\data\metadata"
+          readOnly: false
+          name: smb
+          subPath: metadata
+        - mountPath: "\data\transcode"
+          readOnly: false
+          name: smb
+          subPath: transcode
         - mountPath: /config
           name: jellyfin
           subPath: config
