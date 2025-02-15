@@ -60,14 +60,14 @@ spec:
           readOnly: false
           name: smb
           subPath: books
-        - mountPath: "/data/metadata"
+        - mountPath: "/config/metadata"
           readOnly: false
           name: smb
-          subPath: metadata
-        - mountPath: "/data/transcode"
+          subPath: data/metadata
+        - mountPath: "/config/cache"
           readOnly: false
           name: smb
-          subPath: transcode
+          subPath: data/cache
         - mountPath: /config
           name: jellyfin
           subPath: config
