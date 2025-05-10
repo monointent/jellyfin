@@ -27,7 +27,8 @@ spec:
         name: jellyfin
         resources:
           limits:
-            gpu.intel.com/i915: "1" # requesting 1 GPU
+            #gpu.intel.com/i915: "1" # requesting 1 GPU
+            gpu.intel.com/device-id.0300-56a5: "1"
         ports:
         - containerPort: 8096
           name: web
